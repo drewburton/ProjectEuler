@@ -6,10 +6,13 @@ using namespace std;
 class LargeInt
 {
 public:
-    LargeInt();
+    LargeInt(string number);
     ~LargeInt();
 
-    void init(string number);
-    //int digits[100];
+    void stringToInt(string number); // stored in digits
+
+protected:
+    int digits[100];
+
 };
 
