@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -10,9 +11,10 @@ public:
     ~LargeInt();
 
     void stringToInt(string number); // stored in digits
+    void addLargeInt(int * firstArray, int * secondArray);
+    int _largeIntAnswer[100];
 
 protected:
-    int digits[100];
-
+    int _digits[100];
 };
 
