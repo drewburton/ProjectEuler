@@ -1,58 +1,98 @@
 #include "stdafx.h"
 #include "LargeInt.h"
 
+LargeInt::LargeInt() {
+    digits = new list<int>();
+}
 
-LargeInt::LargeInt(string number)
+LargeInt::LargeInt(string number) : LargeInt()
 {
+    list<int>::iterator numberIterator = digits->begin();
     for (unsigned int index = 0; index < number.length(); index++)
     {
-        _digits[index] = 0;
-        _largeIntAnswer[index] = 0;
+        digits->push_front(parseCharToInt(number[index]));
     }
-    stringToInt(number);
+}
+
+LargeInt::LargeInt(list<int> *newDigits) {
+    digits = newDigits;
 }
 
 
 LargeInt::~LargeInt()
 {
-
+    delete digits;
 }
 
-void LargeInt::stringToInt(string number)
+LargeInt LargeInt::addLargeInt(LargeInt numberToAdd)
 {
-    for (unsigned int index = 0; index < number.length(); index++)
-        _digits[index] = number[index];
-}
-
-void LargeInt::addLargeInt(int * firstArray, int * secondArray)
-{
-    bool shouldCarry = false;
+    list<int> *secondDigits = numberToAdd.digits;
+    list<int> *largeIntAnswer = new list<int>();
+    list<int>::iterator firstIterator = digits->begin();
+    list<int>::iterator secondIterator = secondDigits->begin();
     int amountToCarry = 0;
-    int sumOfDigit = 0;
-    int answerIndexOffset = sizeof(firstArray - 1);
+    int sumOfDigits = 0;
+    int nextSum = 0;
 
-    for (int index = sizeof(firstArray - 1); index >= 0; index--)
+    if (digits->size() != secondDigits->size())
     {
-        sumOfDigit = firstArray[index] + secondArray[index] + _largeIntAnswer[index + answerIndexOffset];
-        std::cout << "sumOfDigit: " << sumOfDigit << endl;
+        int difference = digits->size() - secondDigits->size();
+        while (difference > 0)
+        {
+            secondDigits->push_back(0);
+            difference = digits->size() - secondDigits->size();
+        }
+    }
 
-        if (sumOfDigit >= 10)
-            amountToCarry = int(sumOfDigit / 10);
+    firstIterator = digits->begin();
+    secondIterator = secondDigits->begin();
+    while (firstIterator != digits->end())
+    {
+        sumOfDigits = *firstIterator + *secondIterator + amountToCarry;
+
+        if ((sumOfDigits) >= 10)
+        {
+            amountToCarry = 1;
+            sumOfDigits -= 10;
+        }
         else
             amountToCarry = 0;
 
-        if (amountToCarry > 0)
-        {
-            cout << "amountToCarry: " << amountToCarry << endl;
-            _largeIntAnswer[index + answerIndexOffset - 1] += amountToCarry;
-            _largeIntAnswer[index + answerIndexOffset] = sumOfDigit - 10;
-            if (amountToCarry > 10)
-            {
-                _largeIntAnswer[index + answerIndexOffset - 2] += 1;
-                _largeIntAnswer[index + answerIndexOffset - 1] -= 10;
-            }
-        }
-        else // hiiiiiii
-            _largeIntAnswer[index + answerIndexOffset] = sumOfDigit;
+        largeIntAnswer->push_front(sumOfDigits);
+
+        advance(firstIterator, 1);
+        advance(secondIterator, 1);
     }
+    if (amountToCarry > 0) 
+        largeIntAnswer->push_front(amountToCarry);
+
+    print();
+
+    return LargeInt(largeIntAnswer);
+}
+
+void LargeInt::print()
+{
+    for (list<int>::iterator digitsIterator = digits->begin();
+        digitsIterator != digits->end(); digitsIterator++)
+    {
+        cout << *digitsIterator;
+    }
+}
+
+int LargeInt::parseCharToInt(char character)
+{
+    return character - '0';
+}
+
+int LargeInt::amountInList(list<int> listInput)
+{
+
+    int amountInList = 0;
+    list<int>::iterator iterator = listInput.begin();
+    for (;iterator != listInput.end(); advance(iterator, 1))
+    {
+        amountInList += 1;
+    }
+    return amountInList;
 }

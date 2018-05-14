@@ -1,20 +1,25 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <list>
 
 using namespace std;
 
 class LargeInt
 {
 public:
+    LargeInt();
     LargeInt(string number);
+    LargeInt(list<int> *newDigits);
     ~LargeInt();
 
-    void stringToInt(string number); // stored in digits
-    void addLargeInt(int * firstArray, int * secondArray);
-    int _largeIntAnswer[100];
+    LargeInt addLargeInt(LargeInt numberToAdd);
+    void print();
 
 protected:
-    int _digits[100];
+    int parseCharToInt(char character);
+    int amountInList(list<int> listInput);
+
+    list<int> *digits;
 };
 
