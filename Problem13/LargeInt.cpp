@@ -7,14 +7,14 @@ LargeInt::LargeInt() {
 
 LargeInt::LargeInt(string number) : LargeInt()
 {
-    list<int>::iterator numberIterator = digits->begin();
     for (unsigned int index = 0; index < number.length(); index++)
     {
         digits->push_front(parseCharToInt(number[index]));
     }
 }
 
-LargeInt::LargeInt(list<int> *newDigits) {
+LargeInt::LargeInt(list<int> *newDigits)
+{
     digits = newDigits;
 }
 
@@ -24,15 +24,14 @@ LargeInt::~LargeInt()
     delete digits;
 }
 
-LargeInt LargeInt::addLargeInt(LargeInt numberToAdd)
+LargeInt LargeInt::addLargeInt(LargeInt * numberToAdd)
 {
-    list<int> *secondDigits = numberToAdd.digits;
+    list<int> *secondDigits = numberToAdd->digits;
     list<int> *largeIntAnswer = new list<int>();
     list<int>::iterator firstIterator = digits->begin();
     list<int>::iterator secondIterator = secondDigits->begin();
     int amountToCarry = 0;
     int sumOfDigits = 0;
-    int nextSum = 0;
 
     if (digits->size() != secondDigits->size())
     {
@@ -44,13 +43,10 @@ LargeInt LargeInt::addLargeInt(LargeInt numberToAdd)
         }
     }
 
-    firstIterator = digits->begin();
-    secondIterator = secondDigits->begin();
     while (firstIterator != digits->end())
     {
         sumOfDigits = *firstIterator + *secondIterator + amountToCarry;
-
-        if ((sumOfDigits) >= 10)
+        if (sumOfDigits >= 10)
         {
             amountToCarry = 1;
             sumOfDigits -= 10;
@@ -59,24 +55,40 @@ LargeInt LargeInt::addLargeInt(LargeInt numberToAdd)
             amountToCarry = 0;
 
         largeIntAnswer->push_front(sumOfDigits);
-
         advance(firstIterator, 1);
         advance(secondIterator, 1);
     }
-    if (amountToCarry > 0) 
+    if (amountToCarry > 0)
+    {
         largeIntAnswer->push_front(amountToCarry);
-
-    print();
+    }
 
     return LargeInt(largeIntAnswer);
 }
 
-void LargeInt::print()
+void LargeInt::print(bool backward)
 {
-    for (list<int>::iterator digitsIterator = digits->begin();
-        digitsIterator != digits->end(); digitsIterator++)
+    if (backward)
     {
-        cout << *digitsIterator;
+        list<int> * print = new list<int>();
+        for (list<int>::iterator digitsIterator = digits->begin();
+            digitsIterator != digits->end(); digitsIterator++)
+        {
+            print->push_front(*digitsIterator);
+        }
+
+        for (list<int>::iterator printIterator = print->begin(); printIterator != print->end(); printIterator++)
+        {
+            cout << *printIterator;
+        }
+    }
+    else
+    {
+        for (list<int>::iterator digitsIterator = digits->begin();
+            digitsIterator != digits->end(); digitsIterator++)
+        {
+            cout << *digitsIterator;
+        }
     }
 }
 

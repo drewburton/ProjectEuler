@@ -13,8 +13,8 @@ public:
     LargeInt(list<int> *newDigits);
     ~LargeInt();
 
-    LargeInt addLargeInt(LargeInt numberToAdd);
-    void print();
+    LargeInt addLargeInt(LargeInt * numberToAdd);
+    void print(bool backward);
 
 protected:
     int parseCharToInt(char character);
