@@ -19,7 +19,7 @@ LargeInt::LargeInt(list<int> * newDigits) : LargeInt()
     while (newDigitsIterator != newDigits->end())
     {
         int currentNumber = *newDigitsIterator;
-        digits->push_back(currentNumber);
+        digits->push_front(currentNumber);
         advance(newDigitsIterator, 1);
     }
 }
@@ -30,7 +30,7 @@ LargeInt::~LargeInt()
     delete digits;
 }
 
-LargeInt LargeInt::addLargeInt(LargeInt * numberToAdd)
+LargeInt * LargeInt::addLargeInt(LargeInt * numberToAdd)
 {
     list<int>::iterator digitsIterator = digits->begin();
     list<int> *secondDigits = numberToAdd->digits;
@@ -69,7 +69,7 @@ LargeInt LargeInt::addLargeInt(LargeInt * numberToAdd)
         largeIntAnswer->push_front(amountToCarry);
     }
 
-    return LargeInt(largeIntAnswer);
+    return new LargeInt(largeIntAnswer);
 }
 
 void LargeInt::print(bool backward)

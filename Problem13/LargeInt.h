@@ -13,7 +13,7 @@ public:
     LargeInt(list<int> *newDigits);
     ~LargeInt();
 
-    LargeInt addLargeInt(LargeInt * numberToAdd);
+    LargeInt * addLargeInt(LargeInt * numberToAdd);
     void print(bool backward);
 
 protected:
