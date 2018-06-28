@@ -13,9 +13,15 @@ LargeInt::LargeInt(string number) : LargeInt()
     }
 }
 
-LargeInt::LargeInt(list<int> *newDigits)
+LargeInt::LargeInt(list<int> * newDigits) : LargeInt()
 {
-    digits = newDigits;
+    list<int>::iterator newDigitsIterator = newDigits->begin();
+    while (newDigitsIterator != newDigits->end())
+    {
+        int currentNumber = *newDigitsIterator;
+        digits->push_back(currentNumber);
+        advance(newDigitsIterator, 1);
+    }
 }
 
 
@@ -26,9 +32,9 @@ LargeInt::~LargeInt()
 
 LargeInt LargeInt::addLargeInt(LargeInt * numberToAdd)
 {
+    list<int>::iterator digitsIterator = digits->begin();
     list<int> *secondDigits = numberToAdd->digits;
     list<int> *largeIntAnswer = new list<int>();
-    list<int>::iterator firstIterator = digits->begin();
     list<int>::iterator secondIterator = secondDigits->begin();
     int amountToCarry = 0;
     int sumOfDigits = 0;
@@ -43,9 +49,9 @@ LargeInt LargeInt::addLargeInt(LargeInt * numberToAdd)
         }
     }
 
-    while (firstIterator != digits->end())
+    while (digitsIterator != digits->end())
     {
-        sumOfDigits = *firstIterator + *secondIterator + amountToCarry;
+        sumOfDigits = *digitsIterator + *secondIterator + amountToCarry;
         if (sumOfDigits >= 10)
         {
             amountToCarry = 1;
@@ -55,7 +61,7 @@ LargeInt LargeInt::addLargeInt(LargeInt * numberToAdd)
             amountToCarry = 0;
 
         largeIntAnswer->push_front(sumOfDigits);
-        advance(firstIterator, 1);
+        advance(digitsIterator, 1);
         advance(secondIterator, 1);
     }
     if (amountToCarry > 0)
