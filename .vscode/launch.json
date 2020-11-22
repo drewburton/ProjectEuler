@@ -1,0 +1,56 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main20",
+            "request": "launch",
+            "mainClass": "Main20",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main19",
+            "request": "launch",
+            "mainClass": "Main19",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main18",
+            "request": "launch",
+            "mainClass": "Main18",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main17",
+            "request": "launch",
+            "mainClass": "Main17",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main16",
+            "request": "launch",
+            "mainClass": "Main16",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
