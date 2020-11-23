@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Main25",
+            "request": "launch",
+            "mainClass": "Main25",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main24",
+            "request": "launch",
+            "mainClass": "Main24",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main23",
+            "request": "launch",
+            "mainClass": "Main23",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main22",
+            "request": "launch",
+            "mainClass": "Main22",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main21",
+            "request": "launch",
+            "mainClass": "Main21",
+            "projectName": "ProjectEuler_7ed76d95"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main20",
             "request": "launch",
             "mainClass": "Main20",
