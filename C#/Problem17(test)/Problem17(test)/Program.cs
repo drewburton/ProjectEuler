@@ -49,7 +49,7 @@
         private static void addLengths()
         {
             long lengths = 0;
-            for (int i = 101; i < 1000; i++)
+            for (int i = 1; i <= 1000; i++)
             {
                 lengths += getLength(i, out string? result, out string? result2);
                 if (result2.Length > 0) Console.WriteLine(result + "and" + result2);
